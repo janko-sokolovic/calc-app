@@ -1,0 +1,7 @@
+.calculator-wrapper {
+    background: #eeeeee;
+    box-shadow: 0px 0px 5px #888;
+    width: 400px;
+    height: 500px;
+    margin: 50px auto;
+}

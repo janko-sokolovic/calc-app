@@ -122,9 +122,6 @@
       "camelCase"
     ],
     "component-selector": [
-      true,
-      "element",
-      "app",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

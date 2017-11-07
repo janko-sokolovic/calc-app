@@ -1,0 +1,23 @@
+.key {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #888888;
+    display: inline-block;
+    font-size: 50px;
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.key:hover {
+    background: #dddddd;
+}
+
+.key:active {
+    background: #cccccc;
+}
+
+.key.colspan-2 {
+    width: 200px;
+}
