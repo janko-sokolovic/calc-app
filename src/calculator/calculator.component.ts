@@ -8,4 +8,10 @@ import { KEYS } from './keys.conf';
 })
 export class CalculatorComponent {
   keys = KEYS;
+
+  /**
+  * Main value which is displayed.
+  */
+  private currentValue = 0;
+
 }
