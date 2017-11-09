@@ -71,13 +71,13 @@ export class CalculatorComponent {
   evaluateResult(): void {
     let result = 0;
     if (this.operation === '+') {
-      result = Number(this.currentValue) + Number(this.leftOperand);
+      result = Number(this.leftOperand) + Number(this.currentValue);
     } else if (this.operation === '-') {
-      result = Number(this.currentValue) - Number(this.leftOperand);
+      result = Number(this.leftOperand) - Number(this.currentValue);
     } else if (this.operation === 'x') {
-      result = Number(this.currentValue) * Number(this.leftOperand);
+      result = Number(this.leftOperand) * Number(this.currentValue);
     } else if (this.operation === '÷') {
-      result = Number(this.currentValue) / Number(this.leftOperand);
+      result = Number(this.leftOperand) / Number(this.currentValue);
     } else if (this.operation === '%') {
       result = Number(this.leftOperand) % Number(this.currentValue);
     }
