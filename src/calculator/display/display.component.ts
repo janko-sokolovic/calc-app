@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'display',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./display.component.css']
   })
 export class DisplayComponent {
+    @Input()
+    value: string;
 }

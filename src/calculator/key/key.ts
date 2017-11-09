@@ -1,7 +1,10 @@
 export class Key {
-    value: string;
-    type: KeyType;
     colspan?: number;
+    constructor(readonly value: string, readonly type: KeyType, colspan?: number) {
+        this.value = value;
+        this.type = type;
+        if (colspan) { this.colspan = colspan; }
+    }
 }
 
 export enum KeyType {
