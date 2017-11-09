@@ -2,7 +2,7 @@ import { Key, KeyType } from './key/key';
 
 export const KEYS: Key[] = [
     new Key('C', KeyType.CLEAR),
-    new Key('+/-', KeyType.OPERATION),
+    new Key('+/-', KeyType.INVERT),
     new Key('%', KeyType.OPERATION),
     new Key('÷', KeyType.OPERATION),
     new Key('7', KeyType.NUMBER),
@@ -19,5 +19,5 @@ export const KEYS: Key[] = [
     new Key('+', KeyType.OPERATION),
     new Key('0', KeyType.NUMBER, 2),
     new Key('.', KeyType.DECIMAL_POINT),
-    new Key('=', KeyType.OPERATION),
+    new Key('=', KeyType.YIELD),
 ];
