@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { KEYS } from './keys.conf';
 import { Key, KeyType } from './key/key';
 import { PACKAGE_ROOT_URL } from '@angular/core/src/application_tokens';
+import { read, open } from 'fs';
 
 @Component({
   selector: 'calculator',
@@ -15,7 +16,7 @@ export class CalculatorComponent {
   /**
   * Main value which is displayed
   */
-  currentValue = '';
+  private currentValue = '';
 
   /**
   * Left operand's value
@@ -23,18 +24,11 @@ export class CalculatorComponent {
   private leftOperand = 0;
 
   /**
-  * Right operand's value
-  */
-  private rightOperant = 0;
-
-  /**
   * Selected operation
   */
   private operation = '';
 
-  constructor() {
-    this.currentValue = String(this.leftOperand);
-  }
+  constructor() {}
 
   /**
    * Handles key strokes.
@@ -43,9 +37,10 @@ export class CalculatorComponent {
     if (key.type === KeyType.NUMBER || key.type === KeyType.DECIMAL_POINT) {
       this.addNumber(key.value);
     } else if (key.type === KeyType.OPERATION) {
-      this.setOperation(key);
+      console.log("key op " + key.value );
+      this.setOperation(key.value);
     } else if (key.type === KeyType.YIELD) {
-      this.evaluateResult();
+      this.doEquals();
     } else if (key.type === KeyType.CLEAR) {
       this.clear();
     } else if (key.type === KeyType.INVERT) {
@@ -55,20 +50,30 @@ export class CalculatorComponent {
   }
 
   addNumber(value: string): void {
-    if (this.currentValue === '0') {
+    if (this.currentValue === '') {
       this.currentValue = value;
     } else {
       this.currentValue += value;
     }
   }
 
-  setOperation(key: Key): void {
-    this.leftOperand = Number(this.currentValue);
-    this.operation = key.value;
-    this.currentValue = '0';
+  setOperation(operation: string): void {
+    if(this.operation !== ''){
+      this.leftOperand = this.evaluateResult();
+    } else {
+      this.leftOperand = Number(this.currentValue); 
+    }
+    
+    this.operation = operation;
   }
 
-  evaluateResult(): void {
+  doEquals () :void {
+    this.leftOperand  = this.evaluateResult();
+    this.currentValue = '' + this.leftOperand;
+    this.operation = '';
+  }
+
+  evaluateResult(): number {
     let result = 0;
     if (this.operation === '+') {
       result = Number(this.leftOperand) + Number(this.currentValue);
@@ -82,13 +87,13 @@ export class CalculatorComponent {
       result = Number(this.leftOperand) % Number(this.currentValue);
     }
 
-    this.currentValue = Math.round(Number(result.toFixed(7))) + '';
-
-    this.leftOperand = result;
+    this.currentValue = '';
+    
+    return result;
   }
 
   clear(): void {
-    this.currentValue = '0';
+    this.currentValue = '';
     this.operation = '';
     this.leftOperand = 0;
   }
