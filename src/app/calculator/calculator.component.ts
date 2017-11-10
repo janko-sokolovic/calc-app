@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KEYS } from './keys.conf';
+import { KEYS } from './key/keys.conf';
 import { Key, KeyType } from './key/key';
 import { Calculator } from './calculator';
 import { CommandFactory } from './commands/command-factory';

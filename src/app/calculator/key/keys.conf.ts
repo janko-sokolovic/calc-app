@@ -1,4 +1,4 @@
-import { Key, KeyType } from './key/key';
+import { Key, KeyType } from './key';
 
 export const KEYS: Key[] = [
     new Key('C', KeyType.CLEAR),
