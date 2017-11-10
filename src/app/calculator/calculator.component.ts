@@ -37,7 +37,6 @@ export class CalculatorComponent {
     if (key.type === KeyType.NUMBER || key.type === KeyType.DECIMAL_POINT) {
       this.addNumber(key.value);
     } else if (key.type === KeyType.OPERATION) {
-      console.log("key op " + key.value );
       this.setOperation(key.value);
     } else if (key.type === KeyType.YIELD) {
       this.doEquals();
@@ -46,7 +45,6 @@ export class CalculatorComponent {
     } else if (key.type === KeyType.INVERT) {
       this.currentValue = - Number(this.currentValue) + '';
     }
-
   }
 
   addNumber(value: string): void {
@@ -64,6 +62,7 @@ export class CalculatorComponent {
       this.leftOperand = Number(this.currentValue); 
     }
     
+    this.currentValue = '';
     this.operation = operation;
   }
 
@@ -87,8 +86,7 @@ export class CalculatorComponent {
       result = Number(this.leftOperand) % Number(this.currentValue);
     }
 
-    this.currentValue = '';
-    
+
     return result;
   }
 
