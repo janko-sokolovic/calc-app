@@ -12,7 +12,7 @@ export class KeyComponent {
     @Output()
     hitKey = new EventEmitter();
 
-    clicked(): void {
+    clicked($event): void {
         this.hitKey.emit(this.key);
     }
 }
