@@ -1,4 +1,0 @@
-<div class="calculator-wrapper">
-    <display [value]="calculator.currentValue || calculator.leftOperand"></display>
-    <key *ngFor="let key of keys" [key]="key" (hitKey)="handleKeyAction($event)"></key> 
-</div>
